@@ -1,6 +1,13 @@
 # ansible-treeview-visualizer README
 
-This is the README for your extension "ansible-treeview-visualizer". After writing up a brief description, we recommend including the following sections.
+VSCode plugin that adds an Ansible visualization in a form of tree view.
+
+## Installation
+
+1. Install Node.js
+2. Run `npm install`
+3. Run `npm run build`
+4. Run the project
 
 ## Features
 

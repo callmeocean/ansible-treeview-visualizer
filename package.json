@@ -14,20 +14,42 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"keybindings": [{
+			"command": "ansibleTreeview.search",
+			"key": "Ctrl+A Ctrl+S"
+		}],
 		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "ansible",
-					"title": "Ansible",
-					"icon": "./src/media/ansible_sm.png"
-				}
-			]
+			"activitybar": [{
+				"id": "ansible",
+				"title": "Ansible",
+				"icon": "./src/media/ansible_sm.png"
+			}]
 		},
 		"views": {
-			"ansible": [
+			"ansible": [{
+				"id": "ansibleTreeView",
+				"name": "Ansible Treeview"
+			}]
+		},
+		"commands": [{
+				"command": "ansibleTreeview.previousSearchResult",
+				"title": "Previous"
+			},
+			{
+				"command": "ansibleTreeview.nextSearchResult",
+				"title": "Next"
+			}
+		],
+		"menus": {
+			"view/title": [{
+					"command": "ansibleTreeview.previousSearchResult",
+					"when": "view == ansibleTreeView",
+					"group": "navigation"
+				},
 				{
-					"id": "ansibleTreeView",
-					"name": "Ansible Treeview"
+					"command": "ansibleTreeview.nextSearchResult",
+					"when": "view == ansibleTreeView",
+					"group": "navigation"
 				}
 			]
 		}

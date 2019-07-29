@@ -12,7 +12,7 @@ export class AnsibleStep {
     line: number;
     column: number;
 
-    constructor(name: string, uri: vscode.Uri | undefined, 
+    constructor(name: string, uri: vscode.Uri | undefined,
         type: AnsibleStepType, line: number = 0, column: number = 0, parent?: AnsibleStep) {
         this.id = Guid.create();
         this.name = name;

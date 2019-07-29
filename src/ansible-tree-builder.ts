@@ -31,7 +31,7 @@ export class AnsibleTreeBuilder {
 
     private async goOverNodes(step: AnsibleStep) {
         for (let i = 0; i < step.childNodes.length; i++) {
-            const childNode = step.childNodes[i];
+            let childNode = step.childNodes[i];
 
             if (childNode.type === AnsibleStepType.Role) {
                 let mainTaskUri: vscode.Uri | null = null;
@@ -50,14 +50,14 @@ export class AnsibleTreeBuilder {
                 let roles: AnsibleStep[] | null = [];
 
                 if (metaUri) {
-                    let taskParser = new TaskParser(step, metaUri);
+                    let taskParser = new TaskParser(childNode, metaUri);
                     let dependentRoles = await taskParser.parse();
                     if (dependentRoles) {
                         roles = dependentRoles;
                     }
                 }
                 if (mainTaskUri) {
-                    let taskParser = new TaskParser(step, mainTaskUri);
+                    let taskParser = new TaskParser(childNode, mainTaskUri);
                     let mainRoles = await taskParser.parse();
                     if (mainRoles) {
                         roles = roles.concat(mainRoles);
